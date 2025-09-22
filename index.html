@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simple Chess</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <h1>Simple Chess</h1>
+      <div id="status"></div>
+      <div class="coins">
+        <span id="coinW">P1 Coins: 0</span>
+        <span id="coinB">P2 Coins: 0</span>
+      </div>
+      <div class="shop" aria-label="Shop">
+        <div class="shop-row">
+          <button class="shop-btn" data-piece="P">Buy Pawn (1)</button>
+          <button class="shop-btn" data-piece="N">Buy Knight (3)</button>
+          <button class="shop-btn" data-piece="B">Buy Bishop (3)</button>
+          <button class="shop-btn" data-piece="R">Buy Rook (5)</button>
+          <button class="shop-btn" data-piece="Q">Buy Queen (9)</button>
+          <button class="shop-btn-missile" id="buyMissile">Buy Missile (4)</button>
+          <button id="cancelBuy">Cancel</button>
+        </div>
+        <div class="shop-hint">Select a piece to buy, then click an owned empty square to place. Buying ends your turn. Kings cannot be purchased.</div>
+      </div>
+      <div id="board" class="board" aria-label="Chess board" role="grid"></div>
+      <div class="controls">
+        <button id="resetBtn">Reset</button>
+      </div>
+      <p class="hint">Rules: legal moves for each piece, turns, captures, pawn promotion. No castling, en passant, or check detection yet.</p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+  </html>
+
+

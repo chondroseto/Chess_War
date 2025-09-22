@@ -1,0 +1,142 @@
+:root {
+  /* Dark wood theme - no white squares */
+  --light: #b58863;
+  --dark: #6b4f3a;
+  --highlight: #d7ba7d;
+  --select: #e6c46b;
+  --own-blue: #2b6cb0;
+  --own-red: #c53030;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: #111;
+  color: #f2f2f2;
+  display: grid;
+  place-items: center;
+}
+
+.app {
+  width: min(92vw, 720px);
+}
+
+h1 {
+  margin: 16px 0 8px;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.hint {
+  color: #bdbdbd;
+}
+
+#status {
+  margin: 8px 0 12px;
+}
+
+.coins {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.shop {
+  margin: 8px 0 12px;
+  display: grid;
+  gap: 6px;
+}
+.shop-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.shop-hint { color: #bdbdbd; font-size: 12px; }
+.shop-btn { white-space: nowrap; }
+.shop-btn-missile { background: #3a1f1f; border-color: #6b3a3a; }
+
+.board {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  border: 4px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  user-select: none;
+}
+
+.square {
+  position: relative;
+  display: grid;
+  place-items: center;
+  font-size: clamp(18px, 6vw, 44px);
+  cursor: pointer;
+}
+.piece.white { color: #f4f4f4; text-shadow: 0 1px 1px rgba(0,0,0,.4); }
+.piece.black { color: #222; text-shadow: 0 1px 1px rgba(255,255,255,.2); }
+
+
+.square.light { background: var(--light); }
+.square.dark { background: var(--dark); }
+
+.square.highlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in oklab, var(--highlight) 35%, transparent);
+}
+
+/* Highlight valid placement squares during buy mode */
+.square.placeable::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in oklab, #4caf50 35%, transparent);
+}
+
+/* Targetable squares during missile mode */
+.square.targetable::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in oklab, #e53935 35%, transparent);
+}
+
+.square.selected::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in oklab, var(--select) 45%, transparent);
+}
+
+/* Ownership overlay colors (applied via ::before so highlight/selection stays on top) */
+.square::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.square.own-w::before { background: color-mix(in oklab, var(--own-blue) 35%, transparent); }
+.square.own-b::before { background: color-mix(in oklab, var(--own-red) 35%, transparent); }
+
+.controls {
+  margin: 12px 0 6px;
+}
+
+button {
+  background: #222;
+  color: #f2f2f2;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2b2b2b;
+}
+
+
